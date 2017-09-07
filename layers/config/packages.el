@@ -21,7 +21,8 @@
         ;; magithub
         olivetti
         yasnippet
-
+        (ox-tufte-latex :location local)
+        ox-gfm
         ;; Large config sections
         (org-config :location local)
         ))
@@ -30,7 +31,7 @@
 ;;;; Evil
 
 (defun config/post-init-evil ()
-  (setq evil-escape-key-sequence "jk")
+  (setq evil-escape-key-sequence "fd")
   (setq evil-escape-unordered-key-sequence "true")
 
   (evil-global-set-keys
@@ -221,3 +222,13 @@
 
 (defun config/pre-init-yasnippet ()
   (global-set-key (kbd "C-SPC") 'hippie-expand))
+
+
+;;;; Org tufte
+(defun config/init-ox-tufte-latex ()
+  (use-package ox-tufte-latex))
+
+
+;;;; OX gfm
+(defun config/init-ox-gfm ()
+  (use-package ox-gfm))

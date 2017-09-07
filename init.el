@@ -8,7 +8,7 @@
 ;;
 ;; All configuration is housed in personal layers
 
-(defvar ERIC-ONLY? t
+(defvar ERIC-ONLY? nil
   "If cloning, set to nil, enable non-layer personal configuration.")
 
 (setq is-linuxp (eq system-type 'gnu/linux))
@@ -62,8 +62,9 @@
                      auto-completion-return-key-behavior 'complete
                      auto-completion-tab-key-behavior 'complete
                      auto-completion-enable-snippets-in-popup t)
-    (ivy :variables
-         ivy-extra-directories nil)
+    helm
+    ;; (ivy :variables
+    ;;      ivy-extra-directories nil)
     (org :variables
          org-want-todo-bindings t)
     (shell :variables
@@ -92,6 +93,7 @@
             :packages
             (not hy-mode)  ; I maintain `hy-mode', using local branch
             )
+    latex
     )
   "Programming and markup language layers")
 
@@ -151,8 +153,8 @@
 (defun dotspacemacs/init/display ()
   (setq-default
    dotspacemacs-themes '(solarized-dark solarized-light)
-   dotspacemacs-default-font `("operator mono medium"
-                               :size ,(if is-linuxp 20 12)
+   dotspacemacs-default-font `("Source Code Pro"
+                               :size ,(if is-linuxp 14 12)
                                :powerline-scale 1.5)
    dotspacemacs-fullscreen-at-startup (if is-linuxp nil t)
    dotspacemacs-fullscreen-use-non-native nil
