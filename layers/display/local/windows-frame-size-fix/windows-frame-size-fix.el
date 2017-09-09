@@ -4,5 +4,5 @@
 
 ;;; Windows-frame-size-fix
 
-(add-to-list 'default-frame-alist '(font . "operator mono medium"))
-(set-face-attribute 'default t :font "operator mono medium")
+;; (add-to-list 'default-frame-alist '(font . "operator mono medium"))
+;; (set-face-attribute 'default t :font "operator mono medium")
