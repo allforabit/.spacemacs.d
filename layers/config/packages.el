@@ -7,7 +7,7 @@
         ivy
 
         ;; Org
-        ob-async
+        ;; ob-async
 
         ;; Navigation
         avy
@@ -82,12 +82,12 @@
   (use-package org-config
     :after org))
 
-(defun config/init-ob-async ()
-  (use-package ob-async
-    :after org
-    :config
-    (add-to-list 'org-ctrl-c-ctrl-c-hook
-                 'ob-async-org-babel-execute-src-block)))
+;; (defun config/init-ob-async ()
+;;   (use-package ob-async
+;;     :after org
+;;     :config
+;;     (add-to-list 'org-ctrl-c-ctrl-c-hook
+;;                  'ob-async-org-babel-execute-src-block)))
 
 ;;; Navigation
 ;;;; Avy

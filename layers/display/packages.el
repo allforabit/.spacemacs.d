@@ -3,6 +3,7 @@
 (setq display-packages
       '(
         ;; Core Display Packages
+        yascroll
         all-the-icons
         all-the-icons-ivy
         spaceline-all-the-icons
@@ -95,7 +96,8 @@
     (progn
       (pretty-fonts-set-kwds
        '(;; Fira Code Ligatures
-         (pretty-fonts-fira-font prog-mode-hook org-mode-hook)
+         ;; TODO reenable to get nice fonts. Not working at the moment!
+         ;; (pretty-fonts-fira-font prog-mode-hook org-mode-hook)
          ;; Custom replacements not possible with `pretty-code' package
          (pretty-fonts-hy-mode hy-mode-hook)))
 
@@ -228,3 +230,14 @@
 
       (setq org-clock-current-task nil)  ; bugfix
       )))
+
+;;;; Yascroll
+(defun display/init-yascroll ()
+  (use-package prettify-utils
+    :config
+    (progn
+      (setq yascroll:scroll-bar 'right-fringe)
+      (setq yascroll:delay-to-hide nil))
+    :init
+    (progn
+            (global-yascroll-bar-mode 1))))
