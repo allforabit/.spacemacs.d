@@ -50,12 +50,21 @@
    ("h" "#+BEGIN_SRC haskell\n\n#+END_SRC")
    ("l" "#+BEGIN_SRC lisp\n\n#+END_SRC")
    ("p" "#+BEGIN_SRC python\n\n#+END_SRC")
+   ("s" "#+BEGIN_SRC shell\n\n#+END_SRC")
+   ("j" "#+BEGIN_SRC js :results replace\n\n#+END_SRC")
 
    ;; Collapse previous header by default in themed html export
    ("clps" ":PROPERTIES:\n :HTML_CONTAINER_CLASS: hsCollapsed\n :END:\n")
    ;; Hugo title template
    ("b" "#+TITLE: \n#+SLUG: \n#+DATE: 2017-mm-dd
 #+CATEGORIES: \n#+SUMMARY: \n#+DRAFT: false")))
+
+(setq org-capture-templates
+      '(("t" "Todo" entry (file+headline "~/Bitbucket/org/gtd.org" "Tasks")
+         "* TODO %?\n  %i\n  %a")
+        ("c" "Code journal" entry (file+olp+datetree "~/Bitbucket/org/code.org" "Journal")
+         "* %?\nEntered on %U\n  %i\n  %a"
+         :jump-to-captured t)))
 
 ;;; Org Blocks
 
@@ -72,8 +81,8 @@
 
 (ox-extras-activate '(ignore-headlines))
 
-(setq org-contacts-files (list (os-path "~/Dropbox/contacts.org")))
-(setq org-agenda-files (list (os-path "~/Dropbox/schedule.org")))
+;; (setq org-contacts-files (list (os-path "~/Dropbox/contacts.org")))
+(setq org-agenda-files (list (os-path "~/Bitbucket/org/code.org")))
 
 (when is-linuxp
   (setq org-file-apps '((auto-mode . emacs)
@@ -87,11 +96,25 @@
                                  ("fontsize" "\\scriptsize")
                                  ("xleftmargin" "\\parindent")
                                  ("linenos" "")))
-(setq
- org-latex-pdf-process
- '("pdflatex -shell-escape -interaction nonstopmode -output-directory %o %f"
-   "pdflatex -shell-escape -interaction nonstopmode -output-directory %o %f"
-   "pdflatex -shell-escape -interaction nonstopmode -output-directory %o %f"))
+
+
+(add-to-list 'org-latex-packages-alist
+             '("" "tikz" t))
+
+(eval-after-load "preview"
+  '(add-to-list 'preview-default-preamble "\\PreviewEnvironment{tikzpicture}" t))
+
+(setq org-latex-create-formula-image-program 'imagemagick)
+
+;; (setq
+;;  org-latex-pdf-process
+;;  '("pdflatex -shell-escape -interaction nonstopmode -output-directory %o %f"
+;;    "pdflatex -shell-escape -interaction nonstopmode -output-directory %o %f"
+;;    "pdflatex -shell-escape -interaction nonstopmode -output-directory %o %f"))
+
+;; TODO configure from here: http://matt.hackinghistory.ca/2015/11/11/note-taking-with-pdf-tools/
+;; (add-to-list 'org-file-apps '("\\.pdf\\'" . org-pdfview-open))
+;; (add-to-list 'org-file-apps '("\\.pdf::\\([[:digit:]]+\\)\\'" . org-pdfview-open))
 
 ;;; Babel
 
@@ -99,7 +122,9 @@
  'org-babel-load-languages '((python .  t)
                              (haskell . t)
                              (clojure . t)
-                             (dot .     t)))
+                             (dot .     t)
+                             (shell .     t)
+                             (js . t)))
 
 (setq org-confirm-babel-evaluate nil)
 (setq org-src-fontify-natively t)

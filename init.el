@@ -131,7 +131,7 @@
 
 (defun dotspacemacs/layers/packages ()
   (setq-default
-   dotspacemacs-additional-packages '(solarized-theme)
+   dotspacemacs-additional-packages '()
    dotspacemacs-excluded-packages '(fringe hy-mode)
    dotspacemacs-frozen-packages '()
    dotspacemacs-install-packages 'used-but-keep-unused
@@ -156,9 +156,9 @@
 
 (defun dotspacemacs/init/display ()
   (setq-default
-   dotspacemacs-themes '(solarized-dark solarized-light)
+   dotspacemacs-themes '(doom-one spacemacs-dark leuven)
    dotspacemacs-default-font `("Source Code Pro"
-                               :size ,(if is-linuxp 14 12)
+                               :size 13
                                :powerline-scale 1.5)
    dotspacemacs-fullscreen-at-startup (if is-linuxp nil t)
    dotspacemacs-fullscreen-use-non-native nil
