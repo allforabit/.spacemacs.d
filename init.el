@@ -21,6 +21,7 @@
   (dotspacemacs/init/evil)
   (dotspacemacs/init/keys)
   (dotspacemacs/init/layouts)
+  (dotspacemacs/init/helm)
   (dotspacemacs/init/misc)
   (dotspacemacs/init/packages)
   (dotspacemacs/init/startup))
@@ -37,7 +38,10 @@
 (defun dotspacemacs/user-config ()
   "Configuration that cannot be delegated to layers."
   (dotspacemacs/user-config/toggles)
-  (dotspacemacs/user-config/experiments))
+  (dotspacemacs/user-config/experiments)
+  ;; Temporary fix
+  ;; https://github.com/syl20bnr/spacemacs/issues/9549
+  (require 'helm-bookmark))
 
 ;;; Spacemacs/Layers
 ;;;; Local
@@ -216,11 +220,16 @@
    dotspacemacs-large-file-size 1
    dotspacemacs-auto-save-file-location 'cache
    dotspacemacs-max-rollback-slots 5
-   dotspacemacs-persistent-server nil
+   dotspacemacs-persistent-server nil))
+
+;;;; Helm
+
+(defun dotspacemacs/init/helm ()
+  (setq-default
    dotspacemacs-helm-resize nil
    dotspacemacs-helm-no-header nil
    dotspacemacs-helm-position 'bottom
-   ))
+   dotspacemacs-helm-use-fuzzy 'always))
 
 ;;;; Packages
 
