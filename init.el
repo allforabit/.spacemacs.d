@@ -63,7 +63,7 @@
     git
     syntax-checking
     (auto-completion :variables
-                     auto-completion-return-key-behavior 'complete
+                     auto-completion-return-key-behavior nil
                      auto-completion-tab-key-behavior 'complete
                      auto-completion-enable-snippets-in-popup t)
     helm

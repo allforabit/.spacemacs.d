@@ -4,6 +4,7 @@
    gnus
    org
    pdf-tools
+   evil-surround
 
    ;; Personal Layers
    macros

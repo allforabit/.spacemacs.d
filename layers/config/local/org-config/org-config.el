@@ -90,7 +90,8 @@
                         ("\\.x?html?\\'" . "/usr/bin/firefox %s")
                         ("\\.pdf\\'" . default))))
 
-(add-to-list 'org-latex-packages-alist '("" "minted"))
+;; (add-to-list 'org-latex-packages-alist '("" "minted"))
+
 (setq org-latex-listings 'minted)
 (setq org-latex-minted-options '(("frame" "lines")
                                  ("fontsize" "\\scriptsize")
@@ -124,6 +125,7 @@
                              (clojure . t)
                              (dot .     t)
                              (shell .     t)
+                             (latex .     t)
                              (js . t)))
 
 (setq org-confirm-babel-evaluate nil)
@@ -131,6 +133,13 @@
 (setq org-src-tab-acts-natively t)
 (setq org-src-preserve-indentation t)
 (setq org-src-window-setup 'current-window)
-(setq org-babel-default-header-args:python
-      (cons '(:results . "output file replace")
-            (assq-delete-all :results org-babel-default-header-args)))
+
+
+(setq org-babel-default-header-args
+      '((:session . "none")
+        (:exports . "code")
+        (:results . "replace")
+        (:cache . "no")
+        (:noweb . "no")
+        (:hlines . "no")
+        (:tangle . "no")))
