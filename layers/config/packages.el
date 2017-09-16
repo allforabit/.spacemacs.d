@@ -23,9 +23,10 @@
         yasnippet
         (ox-tufte-latex :location local)
         ox-gfm
+
+        (temp-mode :location local)
         ;; Large config sections
-        (org-config :location local)
-        ))
+        (org-config :location local)))
 
 ;;; Core
 ;;;; Evil
@@ -232,3 +233,10 @@
 ;;;; OX gfm
 (defun config/init-ox-gfm ()
   (use-package ox-gfm))
+
+;;;; Temp mode
+(defun config/init-temp-mode ()
+  (use-package temp-mode))
+
+;;;; OSX
+(setq mac-right-option-modifier nil)

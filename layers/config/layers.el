@@ -4,6 +4,8 @@
    gnus
    org
    pdf-tools
+   vinegar
+   osx
 
    ;; Personal Layers
    macros

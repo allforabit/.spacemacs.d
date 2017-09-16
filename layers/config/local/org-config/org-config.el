@@ -28,6 +28,29 @@
 
 (spacemacs/set-leader-keys-for-major-mode 'org-mode "r" 'org-refile)
 
+(defun org-config-export-remove-prelim-headlines (tree backend info)
+  "Remove headlines tagged \"prelim\" while retaining their
+contents before any export processing."
+  (org-element-map tree org-element-all-elements
+    (lambda (object)
+      (when (and (equal 'headline (org-element-type object))
+                 (member "prelim" (org-element-property :tags object)))
+        (mapc (lambda (el)
+                ;; recursively promote all nested headlines
+                (org-element-map el 'headline
+                  (lambda (el)
+                    (when (equal 'headline (org-element-type el))
+                      (org-element-put-property el
+                                                :level (1- (org-element-property :level el))))))
+                (org-element-insert-before el object))
+              (cddr object))
+        (org-element-extract-element object)))
+    info nil org-element-all-elements)
+  tree)
+
+(add-hook 'org-export-filter-parse-tree-functions
+           'org-config-export-remove-prelim-headlines)
+
 ;;; Theming
 
 (setq org-priority-faces '((65 :inherit org-priority :foreground "red")
@@ -90,12 +113,14 @@
                         ("\\.x?html?\\'" . "/usr/bin/firefox %s")
                         ("\\.pdf\\'" . default))))
 
-(add-to-list 'org-latex-packages-alist '("" "minted"))
-(setq org-latex-listings 'minted)
-(setq org-latex-minted-options '(("frame" "lines")
-                                 ("fontsize" "\\scriptsize")
-                                 ("xleftmargin" "\\parindent")
-                                 ("linenos" "")))
+;; TODO reenable
+;; (add-to-list 'org-latex-packages-alist '("" "minted"))
+
+;; (setq org-latex-listings 'minted)
+;; (setq org-latex-minted-options '(("frame" "lines")
+;;                                  ("fontsize" "\\scriptsize")
+;;                                  ("xleftmargin" "\\parindent")
+;;                                  ("linenos" "")))
 
 
 (add-to-list 'org-latex-packages-alist
@@ -123,7 +148,8 @@
                              (haskell . t)
                              (clojure . t)
                              (dot .     t)
-                             (shell .     t)
+                             (shell .   t)
+                             (latex .   t)
                              (js . t)))
 
 (setq org-confirm-babel-evaluate nil)
@@ -131,6 +157,8 @@
 (setq org-src-tab-acts-natively t)
 (setq org-src-preserve-indentation t)
 (setq org-src-window-setup 'current-window)
-(setq org-babel-default-header-args:python
-      (cons '(:results . "output file replace")
-            (assq-delete-all :results org-babel-default-header-args)))
+
+;; TODO setup these correctly
+;; (setq org-babel-default-header-args:python
+;;       (cons '(:results . "output file replace")
+;;             (assq-delete-all :results org-babel-default-header-args)))
