@@ -113,14 +113,13 @@ contents before any export processing."
                         ("\\.x?html?\\'" . "/usr/bin/firefox %s")
                         ("\\.pdf\\'" . default))))
 
-;; TODO reenable
 ;; (add-to-list 'org-latex-packages-alist '("" "minted"))
 
-;; (setq org-latex-listings 'minted)
-;; (setq org-latex-minted-options '(("frame" "lines")
-;;                                  ("fontsize" "\\scriptsize")
-;;                                  ("xleftmargin" "\\parindent")
-;;                                  ("linenos" "")))
+(setq org-latex-listings 'minted)
+(setq org-latex-minted-options '(("frame" "lines")
+                                 ("fontsize" "\\scriptsize")
+                                 ("xleftmargin" "\\parindent")
+                                 ("linenos" "")))
 
 
 (add-to-list 'org-latex-packages-alist
@@ -148,8 +147,8 @@ contents before any export processing."
                              (haskell . t)
                              (clojure . t)
                              (dot .     t)
-                             (shell .   t)
-                             (latex .   t)
+                             (shell .     t)
+                             (latex .     t)
                              (js . t)))
 
 (setq org-confirm-babel-evaluate nil)
@@ -158,7 +157,12 @@ contents before any export processing."
 (setq org-src-preserve-indentation t)
 (setq org-src-window-setup 'current-window)
 
-;; TODO setup these correctly
-;; (setq org-babel-default-header-args:python
-;;       (cons '(:results . "output file replace")
-;;             (assq-delete-all :results org-babel-default-header-args)))
+
+(setq org-babel-default-header-args
+      '((:session . "none")
+        (:exports . "code")
+        (:results . "replace")
+        (:cache . "no")
+        (:noweb . "no")
+        (:hlines . "no")
+        (:tangle . "no")))
