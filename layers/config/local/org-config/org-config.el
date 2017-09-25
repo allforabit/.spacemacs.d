@@ -196,7 +196,8 @@ contents before any export processing."
 (setq org-src-tab-acts-natively t)
 (setq org-src-preserve-indentation t)
 (setq org-src-window-setup 'current-window)
-(setq org-babel-js-function-wrapper "\n%s\n")
+
+;; (setq org-babel-js-function-wrapper "\n%s\n")
 
 (setq org-babel-default-header-args
       '((:session . "none")
