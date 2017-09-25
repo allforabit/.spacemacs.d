@@ -1,4 +1,5 @@
-;; -*- eval: (git-auto-commit-mode 1) -*-
+;; -*- eval: (git-auto-commit-mode 1); org-babel-temporary-directory: ob-temp; -*-
+
 (require 'org)
 (require 'org-contacts)
 (require 'org-bullets)
