@@ -1,0 +1,86 @@
+* ob-javascript
+
+- support node and headless chrome
+- support requiring npm modules from =node_modules=
+- support session as well as one shoot evaluation
+- babel support
+- wait for promises to resolve
+- no need to =return=
+- avoid using =let= or =const=
+
+** supported header arguments
+
+- session
+- file
+- babel
+
+** examples
+
+*** no return needed
+
+: #+BEGIN_SRC javascript
+: new Date
+: #+END_SRC
+: 
+: #+RESULTS:
+: : 2016-11-26T05:23:47.867Z
+
+*** promise support
+
+if the code block yields a promise, it will be inspected after
+resolution, the default timeout is 5 seconds
+
+: #+BEGIN_SRC javascript
+: fetch = require('node-fetch')
+: 
+: fetch('https://api.github.com/repos/zweifisch/ob-coffee/languages')
+:   .then(res => res.json())
+: #+END_SRC
+: 
+: #+RESULTS:
+: : { 'Emacs Lisp': 4069, JavaScript: 184 }
+
+*** babel
+
+requires `babel-cli`
+
+: #+BEGIN_SRC javascript :babel
+: import fetch from 'node-fetch'
+: 
+: (async () => {
+:   let res = await fetch('https://api.github.com/repos/zweifisch/ob-javascript/languages')
+:   return res.json()
+: })()
+: #+END_SRC
+: 
+: #+RESULTS:
+: : { 'Emacs Lisp': 3993, JavaScript: 864 }
+
+*** file
+
+if the code block yields buffer or stream, and =:file= is specified,
+the result will be written to disk
+
+: #+BEGIN_SRC javascript :file canvas.png
+: Canvas = require('canvas')
+: canvas = new Canvas(100, 100)
+: ctx = canvas.getContext('2d')
+: 
+: ctx.arc(50, 50, 50, -Math.PI * 0.5, Math.PI, false)
+: ctx.fillStyle = '#0ff'
+: ctx.fill()
+: 
+: canvas.toBuffer()
+: #+END_SRC
+: 
+: #+RESULTS:
+[[file:canvas.png]]
+
+*** headless chrome
+
+: #+BEGIN_SRC javascript :session http://gnu.org
+: document.querySelector('title').text
+: #+END_SRC
+: 
+: #+RESULTS:
+: : The GNU Operating System and the Free Software Movement

@@ -84,6 +84,7 @@
 (defvar dotspacemacs/layers/langs
   '(emacs-lisp
     html
+    ;; Configured in langs layer
     javascript
     markdown
     rust

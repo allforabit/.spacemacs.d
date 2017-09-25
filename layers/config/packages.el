@@ -23,9 +23,14 @@
         yasnippet
         (ox-tufte-latex :location local)
         ox-gfm
+        git-auto-commit-mode
 
         (temp-mode :location local)
         ;; Large config sections
+
+        ;; Improved ob js
+        (ob-javascript :location local)
+
         (org-config :location local)))
 
 ;;; Core
@@ -240,3 +245,11 @@
 
 ;;;; OSX
 (setq mac-right-option-modifier nil)
+
+;;;; OB Javscript
+(defun config/init-ob-javascript ()
+  (use-package ob-javascript))
+
+;;;; Git autocommit
+(defun config/init-git-auto-commit-mode ()
+  (use-package git-auto-commit-mode))

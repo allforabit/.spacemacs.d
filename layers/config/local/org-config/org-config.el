@@ -23,10 +23,16 @@
   "gl" 'outline-next-visible-heading
   "gu" 'outline-previous-visible-heading)
 
-;; Quick refile of project tasks
-(setq org-refile-targets '((nil :regexp . "Week of")))
-
+;; Refiling
+(setq org-refile-use-outline-path 'file)
+(setq org-refile-targets '((nil :maxlevel . 9)
+                           ("~/Bitbucket/org/someday.org" :maxlevel . 1)
+                           ("~/Bitbucket/org/tickler.org" :maxlevel . 1)
+                           (org-agenda-files :maxlevel . 9)))
+(setq org-outline-path-complete-in-steps nil)         ; Refile in a single go
+(setq org-refile-use-outline-path t)                  ; Show full paths for refiling
 (spacemacs/set-leader-keys-for-major-mode 'org-mode "r" 'org-refile)
+;;
 
 (defun org-config-export-remove-prelim-headlines (tree backend info)
   "Remove headlines tagged \"prelim\" while retaining their
@@ -61,29 +67,29 @@ contents before any export processing."
 
 ;;; Templates
 
-(setq
- org-structure-template-alist
- '(("n" "#+NAME: ?")
-   ("q" "#+BEGIN_QUOTE\n\n#+END_QUOTE")
+;; (setq
+;;  org-structure-template-alist
+;;  '(("n" "#+NAME: ?")
+;;    ("q" "#+BEGIN_QUOTE\n\n#+END_QUOTE")
 
-   ;; Language Blocks
-   ("c" "#+BEGIN_SRC clojure\n\n#+END_SRC")
-   ("d" "#+BEGIN_SRC dot\n\n#+END_SRC")
-   ("e" "#+BEGIN_SRC emacs-lisp\n\n#+END_SRC")
-   ("h" "#+BEGIN_SRC haskell\n\n#+END_SRC")
-   ("l" "#+BEGIN_SRC lisp\n\n#+END_SRC")
-   ("p" "#+BEGIN_SRC python\n\n#+END_SRC")
-   ("s" "#+BEGIN_SRC shell\n\n#+END_SRC")
-   ("j" "#+BEGIN_SRC js :results replace\n\n#+END_SRC")
+;;    ;; Language Blocks
+;;    ("c" "#+BEGIN_SRC clojure\n\n#+END_SRC")
+;;    ("d" "#+BEGIN_SRC dot\n\n#+END_SRC")
+;;    ("e" "#+BEGIN_SRC emacs-lisp\n\n#+END_SRC")
+;;    ("h" "#+BEGIN_SRC haskell\n\n#+END_SRC")
+;;    ("l" "#+BEGIN_SRC lisp\n\n#+END_SRC")
+;;    ("p" "#+BEGIN_SRC python\n\n#+END_SRC")
+;;    ("s" "#+BEGIN_SRC shell\n\n#+END_SRC")
+;;    ("j" "#+BEGIN_SRC js :results replace\n\n#+END_SRC")
 
-   ;; Collapse previous header by default in themed html export
-   ("clps" ":PROPERTIES:\n :HTML_CONTAINER_CLASS: hsCollapsed\n :END:\n")
-   ;; Hugo title template
-   ("b" "#+TITLE: \n#+SLUG: \n#+DATE: 2017-mm-dd
-#+CATEGORIES: \n#+SUMMARY: \n#+DRAFT: false")))
+;;    ;; Collapse previous header by default in themed html export
+;;    ("clps" ":PROPERTIES:\n :HTML_CONTAINER_CLASS: hsCollapsed\n :END:\n")
+;;    ;; Hugo title template
+;;    ("b" "#+TITLE: \n#+SLUG: \n#+DATE: 2017-mm-dd
+;; #+CATEGORIES: \n#+SUMMARY: \n#+DRAFT: false")))
 
 (setq org-capture-templates
-      '(("t" "Todo" entry (file+headline "~/Bitbucket/org/gtd.org" "Tasks")
+      '(("t" "Todo" entry (file "~/Bitbucket/org/inbox.org")
          "* TODO %?\n  %i\n  %a")
         ("c" "Code journal" entry (file+olp+datetree "~/Bitbucket/org/code.org" "Journal")
          "* %?\nEntered on %U\n  %i\n  %a"
@@ -105,7 +111,36 @@ contents before any export processing."
 (ox-extras-activate '(ignore-headlines))
 
 ;; (setq org-contacts-files (list (os-path "~/Dropbox/contacts.org")))
-(setq org-agenda-files (list (os-path "~/Bitbucket/org/code.org")))
+(setq org-agenda-files (list (os-path "~/Bitbucket/org/code.org")
+                             (os-path "~/Bitbucket/org/gtd.org")))
+
+;; TODO Move elsewhere and setup correctly
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+(setq org-agenda-custom-commands
+      '(("c" "At the computer" tags-todo "@computer"
+         ((org-agenda-overriding-header "Computer")
+          (org-agenda-skip-function #'my-org-agenda-skip-all-siblings-but-first)))
+        ("o" "At the office" tags-todo "@office"
+         ((org-agenda-overriding-header "Office")
+          (org-agenda-skip-function #'my-org-agenda-skip-all-siblings-but-first)))))
+
+(defun my-org-agenda-skip-all-siblings-but-first ()
+  "Skip all but the first non-done entry."
+  (let (should-skip-entry)
+    (unless (org-current-is-todo)
+      (setq should-skip-entry t))
+    (save-excursion
+      (while (and (not should-skip-entry) (org-goto-sibling t))
+        (when (org-current-is-todo)
+          (setq should-skip-entry t))))
+    (when should-skip-entry
+      (or (outline-next-heading)
+          (goto-char (point-max))))))
+
+(defun org-current-is-todo ()
+  (string= "TODO" (org-get-todo-state)))
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 (when is-linuxp
   (setq org-file-apps '((auto-mode . emacs)
@@ -149,7 +184,7 @@ contents before any export processing."
                              (dot .     t)
                              (shell .     t)
                              (latex .     t)
-                             (js . t)))
+                             (javascript . t)))
 
 (setq org-confirm-babel-evaluate nil)
 (setq org-src-fontify-natively t)
