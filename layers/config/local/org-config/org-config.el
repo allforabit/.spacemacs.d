@@ -1,3 +1,4 @@
+;; -*- eval: (git-auto-commit-mode 1) -*-
 (require 'org)
 (require 'org-contacts)
 (require 'org-bullets)
@@ -184,14 +185,15 @@ contents before any export processing."
                              (dot .     t)
                              (shell .     t)
                              (latex .     t)
-                             (javascript . t)))
+                             (js . t)))
+
 
 (setq org-confirm-babel-evaluate nil)
 (setq org-src-fontify-natively t)
 (setq org-src-tab-acts-natively t)
 (setq org-src-preserve-indentation t)
 (setq org-src-window-setup 'current-window)
-
+(setq org-babel-js-function-wrapper "\n%s\n")
 
 (setq org-babel-default-header-args
       '((:session . "none")
