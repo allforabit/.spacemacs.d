@@ -207,3 +207,18 @@ contents before any export processing."
         (:noweb . "no")
         (:hlines . "no")
         (:tangle . "no")))
+
+;; Temp override org-babel-eval to output errors as results
+;; Orginal function is here: https://github.com/emacsmirror/org/blob/master/lisp/ob-eval.el
+(defun org-babel-eval (cmd body)
+  "Run CMD on BODY.
+If CMD succeeds then return its results, otherwise display
+STDERR with `org-babel-eval-error-notify'."
+  (let ((err-buff (get-buffer-create " *Org-Babel Error*")) exit-code)
+    (with-current-buffer err-buff (erase-buffer))
+    (with-temp-buffer
+      (insert body)
+      (setq exit-code
+	          (org-babel--shell-command-on-region
+	           (point-min) (point-max) cmd err-buff))
+      (buffer-string))))
