@@ -11,6 +11,13 @@
 (defvar ERIC-ONLY? nil
   "If cloning, set to nil, enable non-layer personal configuration.")
 
+
+;; TODO Not sure where else to put this
+(setenv "NODE_PATH"
+        (concat
+         "~/.config/yarn/global/node_modules/" ":"
+         (getenv "NODE_PATH")))
+
 (setq is-linuxp (eq system-type 'gnu/linux))
 (defun os-path (x) (if is-linuxp x (expand-file-name x "c:")))
 
@@ -108,25 +115,29 @@
   '(gnus
     graphviz
     ranger
+    (osx
+     :variables
+     osx-right-option-as `none)
     (ibuffer :variables
-             ibuffer-group-buffers-by 'projects)
-    )
+             ibuffer-group-buffers-by 'projects))
   "Miscellaneous layers")
 
 ;;;; Layers/config
 
 (defun dotspacemacs/layers/config ()
+  ;; Doesn't seem to be setting above
+  ;; TODO figure out why this variable isn't setting
   (setq-default
    dotspacemacs-distribution 'spacemacs
    dotspacemacs-enable-lazy-installation 'unused
    dotspacemacs-ask-for-lazy-installation t
-
    dotspacemacs-configuration-layer-path `(,(os-path "~/.spacemacs.d/layers/"))
    dotspacemacs-configuration-layers (append dotspacemacs/layers/core
                                              dotspacemacs/layers/langs
                                              dotspacemacs/layers/extra
                                              dotspacemacs/layers/local)
    ))
+
 
 ;;;; Layers/packages
 
@@ -182,7 +193,7 @@
    dotspacemacs-retain-visual-state-on-shift t
    dotspacemacs-visual-line-move-text nil
    dotspacemacs-ex-substitute-global nil
-   dotspacemacs-enable-paste-transient-state nil
+   dotspacemacs-enable-paste-transient-state t
    dotspacemacs-show-transient-state-title t
    dotspacemacs-show-transient-state-color-guide t
    ))

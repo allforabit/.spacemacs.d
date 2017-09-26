@@ -37,6 +37,8 @@
 ;;;; Evil
 
 (defun config/post-init-evil ()
+
+
   (setq evil-escape-key-sequence "fd")
   (setq evil-escape-unordered-key-sequence "true")
 
@@ -243,8 +245,6 @@
 (defun config/init-temp-mode ()
   (use-package temp-mode))
 
-;;;; OSX
-(setq mac-right-option-modifier nil)
 
 ;;;; OB Javscript
 (defun config/init-ob-javascript ()
@@ -252,4 +252,7 @@
 
 ;;;; Git autocommit
 (defun config/init-git-auto-commit-mode ()
-  (use-package git-auto-commit-mode))
+  (use-package git-auto-commit-mode
+    :config
+    (progn
+      (setq-default gac-automatically-push-p t))))

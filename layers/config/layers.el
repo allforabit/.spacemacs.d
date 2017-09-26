@@ -5,7 +5,6 @@
    org
    pdf-tools
    vinegar
-   osx
    evil-surround
 
    ;; Personal Layers

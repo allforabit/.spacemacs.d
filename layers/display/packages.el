@@ -233,7 +233,7 @@
 
 ;;;; Yascroll
 (defun display/init-yascroll ()
-  (use-package prettify-utils
+  (use-package yascroll
     :config
     (progn
       (setq yascroll:scroll-bar 'right-fringe)
