@@ -66,8 +66,8 @@ contents before any export processing."
 (setq org-priority-faces '((65 :inherit org-priority :foreground "red")
                            (66 :inherit org-priority :foreground "brown")
                            (67 :inherit org-priority :foreground "blue")))
-(setq org-ellipsis "")
-(setq org-bullets-bullet-list '("" "" "" ""))
+;; (setq org-ellipsis "")
+;; (setq org-bullets-bullet-list '("" "" "" ""))
 
 ;;; Templates
 
