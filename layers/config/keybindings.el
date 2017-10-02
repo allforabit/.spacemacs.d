@@ -7,8 +7,6 @@
 
 ;; Windows commands
 (global-set-key (kbd "M-d") 'spacemacs/delete-window)
-(evil-define-key 'normal outline-minor-mode-map (kbd "C-M-i")  ; M-tab
-  'spacemacs/alternate-buffer)
 
 ;; Outline navigation
 (evil-define-key '(normal visual motion) outline-minor-mode-map
