@@ -1,3 +1,4 @@
+;; -*- eval: (git-auto-commit-mode 1) -*-
 ;;; Dotspacemacs
 
 ;; -- Eric Kaschalk's Spacemacs Configuration --
