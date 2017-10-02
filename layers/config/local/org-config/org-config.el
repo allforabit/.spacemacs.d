@@ -292,6 +292,7 @@ Use a prefix arg to get regular RET. "
      (t
       (org-return)))))
 
+
 ;; Disable for now
 ;; (define-key org-mode-map (kbd "RET")
 ;;   'org-config-return)
