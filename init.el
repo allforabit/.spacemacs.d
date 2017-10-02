@@ -18,6 +18,9 @@
          "~/.config/yarn/global/node_modules/" ":"
          (getenv "NODE_PATH")))
 
+;; Windows, set home as default find-file location
+(cd "~")
+
 (setq is-linuxp (eq system-type 'gnu/linux))
 (defun os-path (x) (if is-linuxp x (expand-file-name x "c:")))
 
@@ -40,10 +43,13 @@
 
 (defun dotspacemacs/user-init ()
   "Package independent settings to run before `dotspacemacs/user-config'."
+  (set-fontset-font "fontset-default" nil
+                    (font-spec :size 20 :name "Symbola"))
   (setq custom-file "./elisp/.custom-settings.el"))
 
 (defun dotspacemacs/user-config ()
   "Configuration that cannot be delegated to layers."
+
   (dotspacemacs/user-config/toggles)
   (dotspacemacs/user-config/experiments)
   ;; Temporary fix
@@ -105,6 +111,7 @@
             :packages
             (not hy-mode)  ; I maintain `hy-mode', using local branch
             )
+    pandoc
     latex
     )
   "Programming and markup language layers")
@@ -168,7 +175,7 @@
 
 (defun dotspacemacs/init/display ()
   (setq-default
-   dotspacemacs-themes '(doom-one spacemacs-dark leuven)
+   dotspacemacs-themes '(spacemacs-dark leuven)
    dotspacemacs-default-font `("Source Code Pro"
                                :size 13
                                :powerline-scale 1.5)
@@ -288,3 +295,17 @@
     (load-file (os-path "~/dev/hy-mode/spacemacs-hy.el"))
     (require 'hy-mode)
     (require 'spacemacs-hy)))
+(custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(package-selected-packages
+   (quote
+    (pandoc-mode ht yascroll yapfify xterm-color ws-butler winum which-key web-mode web-beautify volatile-highlights virtualenvwrapper vi-tilde-fringe uuidgen use-package unfill toml-mode toc-org tagedit spaceline-all-the-icons smeargle slim-mode shell-pop scss-mode sass-mode rjsx-mode reveal-in-osx-finder restart-emacs ranger rainbow-delimiters racer pyvenv pytest pyenv-mode py-isort pug-mode prettify-utils prettier-js popwin pip-requirements persp-mode pdf-tools pcre2el pbcopy paradox outshine osx-trash osx-dictionary orgit org-projectile org-present org-pomodoro org-download org-bullets open-junk-file olivetti neotree mwim multi-term move-text mmm-mode markdown-toc magit-gitflow macrostep lorem-ipsum livid-mode live-py-mode lispy linum-relative link-hint less-css-mode launchctl json-mode js2-refactor js-doc intero info+ indent-guide ibuffer-projectile hungry-delete htmlize hlint-refactor hl-todo hindent highlight-parentheses highlight-numbers highlight-indentation hide-comnt help-fns+ helm-themes helm-swoop helm-pydoc helm-projectile helm-mode-manager helm-make helm-hoogle helm-gitignore helm-flx helm-descbinds helm-css-scss helm-company helm-c-yasnippet helm-ag haskell-snippets graphviz-dot-mode google-translate golden-ratio gnuplot gitconfig-mode gitattributes-mode git-timemachine git-messenger git-link git-gutter-fringe git-gutter-fringe+ git-auto-commit-mode gh-md fuzzy flycheck-rust flycheck-pos-tip flycheck-haskell flx-ido fill-column-indicator fancy-battery eyebrowse expand-region exec-path-from-shell evil-visualstar evil-visual-mark-mode evil-unimpaired evil-tutor evil-surround evil-search-highlight-persist evil-numbers evil-nerd-commenter evil-mc evil-matchit evil-magit evil-lisp-state evil-indent-plus evil-iedit-state evil-exchange evil-escape evil-ediff evil-args evil-anzu eslintd-fix eshell-z eshell-prompt-extras esh-help emmet-mode elisp-slime-nav dumb-jump diff-hl cython-mode company-web company-tern company-statistics company-ghci company-ghc company-cabal company-auctex company-anaconda column-enforce-mode coffee-mode cmm-mode clojure-snippets clj-refactor clean-aindent-mode cider-eval-sexp-fu cargo auto-yasnippet auto-highlight-symbol auto-compile auctex-latexmk all-the-icons-ivy aggressive-indent adaptive-wrap ace-link ace-jump-helm-line ac-ispell))))
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ )
