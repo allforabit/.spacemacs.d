@@ -91,7 +91,7 @@
     (version-control :variables
                      version-control-global-margin t
                      version-control-diff-tool 'git-gutter+)
-    spelling
+    spell-checking
     )
   "Layers I consider core to Spacemacs")
 
