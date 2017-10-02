@@ -11,6 +11,10 @@
 
 (provide 'org-config)
 
+;;; Fix for org meta return
+;; https://github.com/syl20bnr/spacemacs/issues/9603
+(org-defkey org-mode-map [(meta return)] 'org-meta-return)
+
 ;;; Bindings and Hooks
 
 (add-hook 'org-mode-hook (lambda () (auto-fill-mode 1)))
