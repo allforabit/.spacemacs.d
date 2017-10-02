@@ -7,6 +7,7 @@
 (require 'org-bullets)
 (require 'ox-bibtex)
 (require 'ox-extra)
+(require 'org-inlinetask)
 
 (provide 'org-config)
 
