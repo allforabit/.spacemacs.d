@@ -61,12 +61,13 @@
 ;;;; Local
 
 (defvar dotspacemacs/layers/local
-  '((macros :location local)    ; All local layers inherit these macros
+  '(
+    ;; (macros :location local)    ; All local layers inherit these macros
 
-    (config :location local)    ; Org, Avy, Evil, Misc... config
-    (display :location local)   ; Pretty-eshell/code/outlines... pkgs
-    (langs :location local)     ; Language config
-    (personal :location local)  ; Personal pkgs
+    ;; (config :location local)    ; Org, Avy, Evil, Misc... config
+    ;; (display :location local)   ; Pretty-eshell/code/outlines... pkgs
+    ;; (langs :location local)     ; Language config
+    ;; (personal :location local)  ; Personal pkgs
     )
   "Local layers housed in '~/.spacemacs.d/layers'.")
 
