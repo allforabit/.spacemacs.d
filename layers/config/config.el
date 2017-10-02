@@ -1,4 +1,3 @@
-;; -*- eval: (git-auto-commit-mode 1) -*-
 ;;; Setup path
 ;; Setting path here for now to make sure msys2 is used
 ;; May not be neccessary, but may be a clearer more explicit approach
