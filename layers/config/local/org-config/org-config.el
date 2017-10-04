@@ -1,14 +1,17 @@
 ;; -*- eval: (git-auto-commit-mode 1) -*-
 ;;
-
-
 (require 'org)
 (require 'org-contacts)
 (require 'org-bullets)
 (require 'ox-bibtex)
 (require 'ox-extra)
+(require 'org-inlinetask)
 
 (provide 'org-config)
+
+;;; Fix for org meta return
+;; https://github.com/syl20bnr/spacemacs/issues/9603
+(org-defkey org-mode-map [(meta return)] 'org-meta-return)
 
 ;;; Bindings and Hooks
 
@@ -188,8 +191,8 @@ contents before any export processing."
                              (dot .     t)
                              (shell .     t)
                              (latex .     t)
-                             (browser .     t)
-                             (js . t)))
+                             (js . t)
+                             (browser . t)))
 
 
 (setq org-confirm-babel-evaluate nil)

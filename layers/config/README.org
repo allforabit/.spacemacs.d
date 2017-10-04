@@ -54,7 +54,7 @@ Features are best understood by seeing the utilized packages in
 | ~SPC n h~   | outline-promote                  |
 | ~SPC n l~   | outline-demote                   |
 | ~SPC n n~   | outshine-narrow-to-subtree       |
-| ~SPC n w~   | widen                           |
+| ~SPC n w~   | widen                            |
 | ~M-RET~     | outshine-insert-heading          |
 | ~<backtab>~ | outshine-cycle-buffer            |
 

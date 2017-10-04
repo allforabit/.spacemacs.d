@@ -97,15 +97,6 @@
 ;;     (add-to-list 'org-ctrl-c-ctrl-c-hook
 ;;                  'ob-async-org-babel-execute-src-block)))
 
-;;; Navigation
-;;;; Avy
-
-(defun config/post-init-avy ()
-  (setq avy-timeout-seconds 0.35)
-  (evil-global-set-key 'normal (kbd "s") 'avy-goto-char-timer)
-  (global-set-key (kbd "C-h") 'avy-pop-mark)
-  (global-set-key (kbd "C-l") 'evil-avy-goto-line))
-
 ;;;; Outshine
 
 (defun config/init-outshine ()

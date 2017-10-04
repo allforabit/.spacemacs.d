@@ -1,3 +1,4 @@
+;; -*- eval: (git-auto-commit-mode 1) -*-
 ;;; Dotspacemacs
 
 ;; -- Eric Kaschalk's Spacemacs Configuration --
@@ -17,6 +18,9 @@
         (concat
          "~/.config/yarn/global/node_modules/" ":"
          (getenv "NODE_PATH")))
+
+;; Windows, set home as default find-file location
+(cd "~")
 
 (setq is-linuxp (eq system-type 'gnu/linux))
 (defun os-path (x) (if is-linuxp x (expand-file-name x "c:")))
@@ -40,10 +44,13 @@
 
 (defun dotspacemacs/user-init ()
   "Package independent settings to run before `dotspacemacs/user-config'."
+  (set-fontset-font "fontset-default" nil
+                    (font-spec :size 20 :name "Symbola"))
   (setq custom-file "./elisp/.custom-settings.el"))
 
 (defun dotspacemacs/user-config ()
   "Configuration that cannot be delegated to layers."
+
   (dotspacemacs/user-config/toggles)
   (dotspacemacs/user-config/experiments)
   ;; Temporary fix
@@ -54,7 +61,8 @@
 ;;;; Local
 
 (defvar dotspacemacs/layers/local
-  '((macros :location local)    ; All local layers inherit these macros
+  '(
+    (macros :location local)    ; All local layers inherit these macros
 
     (config :location local)    ; Org, Avy, Evil, Misc... config
     (display :location local)   ; Pretty-eshell/code/outlines... pkgs
@@ -83,6 +91,7 @@
     (version-control :variables
                      version-control-global-margin t
                      version-control-diff-tool 'git-gutter+)
+    spell-checking
     )
   "Layers I consider core to Spacemacs")
 
@@ -105,6 +114,7 @@
             :packages
             (not hy-mode)  ; I maintain `hy-mode', using local branch
             )
+    pandoc
     latex
     pandoc
     )
@@ -145,7 +155,9 @@
 
 (defun dotspacemacs/layers/packages ()
   (setq-default
-   dotspacemacs-additional-packages '(org-web-tools ob-browser org-protocol-capture-html)
+   dotspacemacs-additional-packages '(org-web-tools
+                                      org-protocol-capture-html
+                                      ob-browser)
    dotspacemacs-excluded-packages '(fringe hy-mode)
    dotspacemacs-frozen-packages '()
    dotspacemacs-install-packages 'used-but-keep-unused
@@ -170,7 +182,7 @@
 
 (defun dotspacemacs/init/display ()
   (setq-default
-   dotspacemacs-themes '(doom-one spacemacs-dark leuven)
+   dotspacemacs-themes '(spacemacs-dark leuven)
    dotspacemacs-default-font `("Source Code Pro"
                                :size 13
                                :powerline-scale 1.5)
