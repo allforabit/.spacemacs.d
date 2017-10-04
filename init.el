@@ -106,6 +106,7 @@
             (not hy-mode)  ; I maintain `hy-mode', using local branch
             )
     latex
+    pandoc
     )
   "Programming and markup language layers")
 
@@ -118,6 +119,7 @@
     (osx
      :variables
      osx-right-option-as `none)
+    search-engine
     (ibuffer :variables
              ibuffer-group-buffers-by 'projects))
   "Miscellaneous layers")
@@ -143,7 +145,7 @@
 
 (defun dotspacemacs/layers/packages ()
   (setq-default
-   dotspacemacs-additional-packages '()
+   dotspacemacs-additional-packages '(org-web-tools ob-browser org-protocol-capture-html)
    dotspacemacs-excluded-packages '(fringe hy-mode)
    dotspacemacs-frozen-packages '()
    dotspacemacs-install-packages 'used-but-keep-unused
