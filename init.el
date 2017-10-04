@@ -155,7 +155,8 @@
   (setq-default
    dotspacemacs-additional-packages '(org-web-tools
                                       org-protocol-capture-html
-                                      ob-browser)
+                                      ob-browser
+                                      graphql-mode)
    dotspacemacs-excluded-packages '(fringe hy-mode)
    dotspacemacs-frozen-packages '()
    dotspacemacs-install-packages 'used-but-keep-unused
