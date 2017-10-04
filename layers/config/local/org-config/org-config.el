@@ -188,6 +188,7 @@ contents before any export processing."
                              (dot .     t)
                              (shell .     t)
                              (latex .     t)
+                             (browser .     t)
                              (js . t)))
 
 
