@@ -153,7 +153,9 @@
 
 (defun dotspacemacs/layers/packages ()
   (setq-default
-   dotspacemacs-additional-packages '()
+   dotspacemacs-additional-packages '(org-web-tools
+                                      org-protocol-capture-html
+                                      ob-browser)
    dotspacemacs-excluded-packages '(fringe hy-mode)
    dotspacemacs-frozen-packages '()
    dotspacemacs-install-packages 'used-but-keep-unused
