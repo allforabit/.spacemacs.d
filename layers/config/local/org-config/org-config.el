@@ -1,7 +1,5 @@
 ;; -*- eval: (git-auto-commit-mode 1) -*-
 ;;
-
-
 (require 'org)
 (require 'org-contacts)
 (require 'org-bullets)
@@ -193,7 +191,8 @@ contents before any export processing."
                              (dot .     t)
                              (shell .     t)
                              (latex .     t)
-                             (js . t)))
+                             (js . t)
+                             (browser . t)))
 
 
 (setq org-confirm-babel-evaluate nil)
