@@ -190,8 +190,8 @@ contents before any export processing."
          :base-extension "org"
          :publishing-directory "~/Desktop/out/normal"
          :include ("cv.org")
-         :publishing-function org-html-publish-to-html
-         :exclude-tags ("noexport", "extended")
+         :publishing-function org-latex-publish-to-pdf
+         :exclude-tags ("extended noexport")
          :section-numbers nil
          :with-toc nil)
         ("cv-extended"
