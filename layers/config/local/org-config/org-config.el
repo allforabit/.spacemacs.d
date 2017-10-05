@@ -186,7 +186,7 @@ contents before any export processing."
 ;; TODO could DRY up a bit
 (setq org-publish-project-alist
       '(("cv-normal"
-         :base-directory "~/Bitbucket/cv/"
+         :base-directory "~/Bitbucket/cv"
          :publishing-directory "~/Desktop/out"
          ;; :publishing-function org-html-publish-to-html
          :base-extension "org"
