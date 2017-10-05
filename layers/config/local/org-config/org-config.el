@@ -190,14 +190,14 @@ contents before any export processing."
          :publishing-directory "~/Bitbucket/cv/out/normal"
          :publishing-function org-html-publish-to-html
          :exclude-tags ":noexport:extended:"
-         :include "cv.org"
+         :include "TODOs.org"
          :section-numbers nil
          :with-toc nil)
         ("cv-extended"
          :base-directory "~/Bitbucket/cv/"
          :publishing-directory "~/Bitbucket/cv/out/extended"
          :publishing-function org-html-publish-to-html
-         :include "cv.org"
+         :include "TODOs.org"
          :section-numbers nil
          :with-toc nil)
         ("cv" :components ("cv-normal" "cv-extended"))))
