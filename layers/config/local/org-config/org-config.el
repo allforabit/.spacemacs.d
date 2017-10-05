@@ -182,6 +182,27 @@ contents before any export processing."
 ;; (add-to-list 'org-file-apps '("\\.pdf\\'" . org-pdfview-open))
 ;; (add-to-list 'org-file-apps '("\\.pdf::\\([[:digit:]]+\\)\\'" . org-pdfview-open))
 
+;;; Publishing
+;; TODO could DRY up a bit
+(setq org-publish-project-alist
+      '(("cv-normal"
+         :base-directory "~/Bitbucket/cv/"
+         :publishing-directory "~/Bitbucket/cv/out/normal"
+         :publishing-function org-html-publish-to-html
+         :exclude-tags ":noexport:extended:"
+         :include "cv.org"
+         :section-numbers nil
+         :with-toc nil)
+        ("cv-extended"
+         :base-directory "~/Bitbucket/cv/"
+         :publishing-directory "~/Bitbucket/cv/out/extended"
+         :publishing-function org-html-publish-to-html
+         :include "cv.org"
+         :section-numbers nil
+         :with-toc nil)
+        ("cv" :components ("cv-normal" "cv-extended"))))
+
+
 ;;; Babel
 
 (org-babel-do-load-languages
