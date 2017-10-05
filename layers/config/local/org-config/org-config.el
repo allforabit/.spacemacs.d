@@ -185,13 +185,13 @@ contents before any export processing."
 ;;; Publishing
 ;; TODO could DRY up a bit
 (setq org-publish-project-alist
-      '(("cv-normal"
-         :base-directory "~/Bitbucket/cv"
+      '(("cvnormal"
+         :base-directory "~/Documents/Bitbucket/cv/"
          :publishing-directory "~/Desktop/out"
-         ;; :publishing-function org-html-publish-to-html
+         ;; :include "cv.org"
+         :publishing-function org-html-publish-to-html
          :base-extension "org"
          ;; :exclude-tags ":noexport:extended:"
-         :include "TODOs.org"
          :section-numbers nil
          :with-toc nil)
         ;; ("cv-extended"
