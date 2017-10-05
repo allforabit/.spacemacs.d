@@ -185,23 +185,25 @@ contents before any export processing."
 ;;; Publishing
 ;; TODO could DRY up a bit
 (setq org-publish-project-alist
-      '(("cvnormal"
+      '(("cv-normal"
          :base-directory "~/Documents/Bitbucket/cv/"
          :base-extension "org"
-         :publishing-directory "~/Desktop/out"
+         :publishing-directory "~/Desktop/out/normal"
          :include ("cv.org")
-         :publishing-function org-html-publish-to-html
-         :exclude-tags ":noexport:extended:"
+         :publishing-function my-org-latex-export-to-pdf
+         :exclude-tags ("noexport", "extended")
          :section-numbers nil
          :with-toc nil)
-        ;; ("cv-extended"
-        ;;  :base-directory "~/Bitbucket/cv/"
-        ;;  :publishing-directory "~/Bitbucket/cv/out/extended"
-        ;;  :publishing-function org-html-publish-to-html
-        ;;  :include "TODOs.org"
-        ;;  :section-numbers nil
-        ;;  :with-toc nil)
-        ;; ("cv" :components ("cv-normal" "cv-extended"))
+        ("cv-extended"
+         :base-directory "~/Bitbucket/cv/"
+         :base-extension "org"
+         :publishing-directory "~/Desktop/out/extended"
+         :publishing-directory "~/Bitbucket/cv/out/extended"
+         :publishing-function org-html-publish-to-html
+         ;; :include "TODOs.org"
+         :section-numbers nil
+         :with-toc nil)
+        ("cv" :components ("cv-normal" "cv-extended"))
         ))
 
 
