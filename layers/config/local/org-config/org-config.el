@@ -187,10 +187,10 @@ contents before any export processing."
 (setq org-publish-project-alist
       '(("cvnormal"
          :base-directory "~/Documents/Bitbucket/cv/"
-         :publishing-directory "~/Desktop/out"
-         ;; :include "cv.org"
-         :publishing-function org-html-publish-to-html
          :base-extension "org"
+         :publishing-directory "~/Desktop/out"
+         :include "TODOs.org"
+         :publishing-function org-html-publish-to-html
          ;; :exclude-tags ":noexport:extended:"
          :section-numbers nil
          :with-toc nil)
