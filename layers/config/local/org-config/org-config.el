@@ -187,7 +187,7 @@ contents before any export processing."
 (setq org-publish-project-alist
       '(("cv-normal"
          :base-directory "~/Bitbucket/cv/"
-         :publishing-directory "~/Desktop/out/normal"
+         :publishing-directory "~/Desktop/out"
          ;; :publishing-function org-html-publish-to-html
          :base-extension "org"
          ;; :exclude-tags ":noexport:extended:"
