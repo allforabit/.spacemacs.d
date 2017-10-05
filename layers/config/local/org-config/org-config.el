@@ -191,7 +191,8 @@ contents before any export processing."
          :publishing-directory "~/Desktop/out/normal"
          :include ("cv.org")
          :publishing-function org-latex-publish-to-pdf
-         :exclude-tags ("extended noexport")
+         :exclude-tags ("extended" "noexport")
+         ;; :include-tags ("export")
          :section-numbers nil
          :with-toc nil)
         ("cv-extended"
