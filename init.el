@@ -116,6 +116,7 @@
             )
     pandoc
     latex
+    pandoc
     )
   "Programming and markup language layers")
 
@@ -128,6 +129,7 @@
     (osx
      :variables
      osx-right-option-as `none)
+    search-engine
     (ibuffer :variables
              ibuffer-group-buffers-by 'projects))
   "Miscellaneous layers")
