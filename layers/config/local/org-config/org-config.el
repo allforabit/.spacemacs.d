@@ -189,7 +189,7 @@ contents before any export processing."
          :base-directory "~/Documents/Bitbucket/cv/"
          :base-extension "org"
          :publishing-directory "~/Desktop/out"
-         :include "TODOs.org"
+         :include ("cv.org")
          :publishing-function org-html-publish-to-html
          ;; :exclude-tags ":noexport:extended:"
          :section-numbers nil
