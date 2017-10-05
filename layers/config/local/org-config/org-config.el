@@ -187,21 +187,22 @@ contents before any export processing."
 (setq org-publish-project-alist
       '(("cv-normal"
          :base-directory "~/Bitbucket/cv/"
-         :publishing-directory "~/Bitbucket/cv/out/normal"
-         :publishing-function org-html-publish-to-html
+         :publishing-directory "~/Desktop/out/normal"
+         ;; :publishing-function org-html-publish-to-html
          :base-extension "org"
          ;; :exclude-tags ":noexport:extended:"
          :include "TODOs.org"
          :section-numbers nil
          :with-toc nil)
-        ("cv-extended"
-         :base-directory "~/Bitbucket/cv/"
-         :publishing-directory "~/Bitbucket/cv/out/extended"
-         :publishing-function org-html-publish-to-html
-         :include "TODOs.org"
-         :section-numbers nil
-         :with-toc nil)
-        ("cv" :components ("cv-normal" "cv-extended"))))
+        ;; ("cv-extended"
+        ;;  :base-directory "~/Bitbucket/cv/"
+        ;;  :publishing-directory "~/Bitbucket/cv/out/extended"
+        ;;  :publishing-function org-html-publish-to-html
+        ;;  :include "TODOs.org"
+        ;;  :section-numbers nil
+        ;;  :with-toc nil)
+        ;; ("cv" :components ("cv-normal" "cv-extended"))
+        ))
 
 
 ;;; Babel
