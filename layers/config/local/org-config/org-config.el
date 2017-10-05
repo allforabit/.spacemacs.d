@@ -191,7 +191,7 @@ contents before any export processing."
          :publishing-directory "~/Desktop/out"
          :include ("cv.org")
          :publishing-function org-html-publish-to-html
-         ;; :exclude-tags ":noexport:extended:"
+         :exclude-tags ":noexport:extended:"
          :section-numbers nil
          :with-toc nil)
         ;; ("cv-extended"
