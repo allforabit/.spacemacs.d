@@ -162,7 +162,7 @@
                                       ob-browser
                                       graphql-mode
                                       doom-themes
-                                      )
+                                      solaire-mode)
    dotspacemacs-excluded-packages '(fringe hy-mode)
    dotspacemacs-frozen-packages '()
    dotspacemacs-install-packages 'used-but-keep-unused
@@ -187,7 +187,7 @@
 
 (defun dotspacemacs/init/display ()
   (setq-default
-   dotspacemacs-themes '(spacemacs-dark leuven)
+   dotspacemacs-themes '(doom-one doom-one-light spacemacs-dark leuven)
    dotspacemacs-default-font `("Source Code Pro"
                                :size 13
                                :powerline-scale 1.5)
