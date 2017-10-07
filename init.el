@@ -46,8 +46,7 @@
   "Package independent settings to run before `dotspacemacs/user-config'."
   (set-fontset-font "fontset-default" nil
                     (font-spec :size 20 :name "Symbola"))
-  (when (version<= "26.0.50" emacs-version )
-    (global-display-line-numbers-mode))
+
   (setq custom-file "./elisp/.custom-settings.el"))
 
 (defun dotspacemacs/user-config ()
