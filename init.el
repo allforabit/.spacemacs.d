@@ -46,7 +46,6 @@
   "Package independent settings to run before `dotspacemacs/user-config'."
   (set-fontset-font "fontset-default" nil
                     (font-spec :size 20 :name "Symbola"))
-
   (setq custom-file "./elisp/.custom-settings.el"))
 
 (defun dotspacemacs/user-config ()
@@ -159,9 +158,7 @@
    dotspacemacs-additional-packages '(org-web-tools
                                       org-protocol-capture-html
                                       ob-browser
-                                      graphql-mode
-                                      doom-themes
-
+                                      graphql-mode)
    dotspacemacs-excluded-packages '(fringe hy-mode)
    dotspacemacs-frozen-packages '()
    dotspacemacs-install-packages 'used-but-keep-unused
