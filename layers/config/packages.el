@@ -8,6 +8,7 @@
 
         ;; Org
         ;; ob-async
+        ox-tufte
 
         ;; Navigation
         avy
@@ -31,7 +32,8 @@
         ;; Improved ob js
         (ob-javascript :location local)
 
-        (org-config :location local)))
+        (org-config :location local)
+		    (solaire-config :location local)))
 
 ;;; Core
 ;;;; Evil
@@ -143,7 +145,26 @@
 ;;;; Ispell
 
 (defun config/post-init-ispell ()
-  (setq ispell-program-name "aspell"))
+  (cond
+   ;; try hunspell at first
+   ;; if hunspell does NOT exist, use aspell
+   ((executable-find "hunspell")
+    (setq ispell-program-name "hunspell")
+
+    (setq ispell-local-dictionary "en_GB")
+
+    (setq ispell-local-dictionary-alist
+          ;; Please note the list `("-d" "en_US")` contains ACTUAL parameters passed to hunspell
+          ;; You could use `("-d" "en_US,en_US-med")` to check with multiple dictionaries
+          '(("en_GB" "[[:alpha:]]" "[^[:alpha:]]" "[']" nil ("-d" "en_GB") nil utf-8)
+            ))
+
+    )
+
+   ((executable-find "aspell")
+    (setq ispell-program-name "aspell")
+    ;; Please note ispell-extra-args contains ACTUAL parameters passed to aspell
+    (setq ispell-extra-args '("--sug-mode=ultra" "--lang=en_GB")))))
 
 ;;;; Gnus
 
@@ -224,9 +245,12 @@
 
 
 ;;;; Org tufte
-(defun config/init-ox-tufte-latex ()
-  (use-package ox-tufte-latex))
-
+;;;;; Latex
+;; (defun config/init-ox-tufte-latex ()
+;;   (use-package ox-tufte-latex))
+;;;;; HTML
+(defun config/init-ox-tufte ()
+  (use-package ox-tufte))
 
 ;;;; OX gfm
 (defun config/init-ox-gfm ()
