@@ -83,7 +83,8 @@
     (auto-completion :variables
                      auto-completion-return-key-behavior nil
                      auto-completion-tab-key-behavior nil
-                     auto-completion-enable-snippets-in-popup t)
+                     auto-completion-enable-snippets-in-popup t
+                     auto-completion-private-snippets-directory "~/.spacemacs.d/snippets/")
     helm
     ;; (ivy :variables
     ;;      ivy-extra-directories nil)
@@ -309,3 +310,5 @@
     (load-file (os-path "~/dev/hy-mode/spacemacs-hy.el"))
     (require 'hy-mode)
     (require 'spacemacs-hy)))
+
+(setq thing)
