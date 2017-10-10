@@ -82,7 +82,7 @@
     syntax-checking
     (auto-completion :variables
                      auto-completion-return-key-behavior nil
-                     auto-completion-tab-key-behavior 'complete
+                     auto-completion-tab-key-behavior nil
                      auto-completion-enable-snippets-in-popup t)
     helm
     ;; (ivy :variables
