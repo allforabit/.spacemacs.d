@@ -146,7 +146,8 @@
    dotspacemacs-enable-lazy-installation 'unused
    dotspacemacs-ask-for-lazy-installation t
    dotspacemacs-configuration-layer-path `(,(os-path "~/.spacemacs.d/layers/"))
-   dotspacemacs-configuration-layers (append dotspacemacs/layers/core
+   dotspacemacs-configuration-layers (vimscript
+                                      append dotspacemacs/layers/core
                                              dotspacemacs/layers/langs
                                              dotspacemacs/layers/extra
                                              dotspacemacs/layers/local)
