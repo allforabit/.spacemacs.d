@@ -48,7 +48,8 @@
                     (font-spec :size 20 :name "Symbola"))
   (when (version<= "26.0.50" emacs-version )
     (global-display-line-numbers-mode))
-  (setq custom-file "./elisp/.custom-settings.el"))
+  (setq custom-file "~/.spacemacs.d/custom.el")
+  (load custom-file))
 
 (defun dotspacemacs/user-config ()
   "Configuration that cannot be delegated to layers."
@@ -119,6 +120,7 @@
     pandoc
     latex
     pandoc
+    vimscript
     )
   "Programming and markup language layers")
 
@@ -146,8 +148,7 @@
    dotspacemacs-enable-lazy-installation 'unused
    dotspacemacs-ask-for-lazy-installation t
    dotspacemacs-configuration-layer-path `(,(os-path "~/.spacemacs.d/layers/"))
-   dotspacemacs-configuration-layers (vimscript
-                                      append dotspacemacs/layers/core
+   dotspacemacs-configuration-layers (append dotspacemacs/layers/core
                                              dotspacemacs/layers/langs
                                              dotspacemacs/layers/extra
                                              dotspacemacs/layers/local)
