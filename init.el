@@ -57,6 +57,7 @@
   (dotspacemacs/user-config/toggles)
   (dotspacemacs/user-config/experiments)
 
+  ;; Switch to org agenda view
   (org-agenda-list)
   (switch-to-buffer "*Org Agenda*")
   ;; Temporary fix
