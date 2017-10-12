@@ -1,8 +1,8 @@
 ;; -*- eval: (git-auto-commit-mode 1) -*-
 ;;; Dotspacemacs
 
-;; -- Eric Kaschalk's Spacemacs Configuration --
-;; -- Contact: ekaschalk@gmail.com --
+;; -- Kevin Nolan's Spacemacs Configuration --
+;; -- Contact: kevnolan@gmail.com --
 ;; -- MIT License --
 ;; -- Emacs 25.2.1 - Dev Branch - Release 0.200.9.x - pulled/pkgs updated: 8/23 --
 ;; -- See README for details and VERSION for updates --
@@ -56,6 +56,9 @@
 
   (dotspacemacs/user-config/toggles)
   (dotspacemacs/user-config/experiments)
+
+  (org-agenda-list)
+  (switch-to-buffer "*Org Agenda*")
   ;; Temporary fix
   ;; https://github.com/syl20bnr/spacemacs/issues/9549
   (require 'helm-bookmark))
@@ -84,6 +87,8 @@
                      auto-completion-return-key-behavior nil
                      auto-completion-tab-key-behavior nil
                      auto-completion-enable-snippets-in-popup t
+                     ;; Possibly could set to "jk" as suggested in the docs
+                     auto-completion-complete-with-key-sequence nil
                      auto-completion-private-snippets-directory "~/.spacemacs.d/snippets/")
     helm
     ;; (ivy :variables
@@ -121,8 +126,7 @@
     pandoc
     latex
     pandoc
-    vimscript
-    )
+    vimscript)
   "Programming and markup language layers")
 
 ;;;; Extra
@@ -310,5 +314,3 @@
     (load-file (os-path "~/dev/hy-mode/spacemacs-hy.el"))
     (require 'hy-mode)
     (require 'spacemacs-hy)))
-
-(setq thing)
